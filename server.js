@@ -23,39 +23,40 @@ app.get("/api/notes", (req, res) => {
 
 app.post("/api/notes", (req, res) => {
   const currentNotes = fs.readFileSync("./db/db.json", "utf-8");
-  const parsedNotes = JSON.parse(currentNotes);
-  const { title, note } = req.body;
+  let parsedNotes = JSON.parse(currentNotes);
+  const { title, text } = req.body;
 
     const newNote = {
       title,
-      note,
-      id: uuid.v4()
+      text,
+      id: uuid.v4(),
     };
 
+    console.log("new note: ", newNote);
     // Add a new review
     parsedNotes.push(newNote);
 console.log(parsedNotes);
-    // Write updated reviews back to the file
+    // Write updated notes back to the file
     fs.writeFileSync( "./db/db.json", JSON.stringify(parsedNotes));
     res.json(parsedNotes);
-  } /*else {
-    res.status(500).json("Error in posting note");
-  }*/
+  } 
 );
 
 app.delete("/api/notes/:id", (req, res) => {
-  // Gets the id of the note to delete
   const currentNotes = fs.readFileSync("./db/db.json", "utf-8");
-  const parsedNotes = JSON.parse(currentNotes);
+  let parsedNotes = JSON.parse(currentNotes);
   const noteID = req.params.id;
   // Finds the note with the given id property
-  const deleteThisNote = parsedNotes.find((note) => note.id === noteID);
+  const deleteNote = parsedNotes.find((note) => note.id === noteID);
   // Deletes the note with the given id property from the JSON array
-  parsedNotes.splice(deleteThisNote, 1);
+  if (deleteNote) {
+    parsedNotes = parsedNotes.filter(note => note.id !== noteID)
+
   // Writes the new note to the db.json file
   fs.writeFileSync("./db/db.json", JSON.stringify(parsedNotes, null, 4));
   // Returns the new note to the client
   res.json(parsedNotes);
+  }
 });
 
 app.listen(PORT, () =>

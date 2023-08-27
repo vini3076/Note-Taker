@@ -1,1 +1,12 @@
-[{"title":"hello","note":"test","id":"6a7ac6ac-adf1-447f-8169-8e8027e0bef8"},{"title":"hello2","note":"test","id":"943d354b-3f8f-44f8-ae44-784e9f72897c"},{"title":"test","id":"66a03117-3896-4082-86e3-07172651e944"}]
+[
+    {
+        "title": "Note1",
+        "text": "This is note 1",
+        "id": "095eb3ef-9265-4323-8616-4c2e364ce883"
+    },
+    {
+        "title": "Note 2",
+        "text": "This is Note 2",
+        "id": "c149399b-3a8a-4ce0-9866-523b846e36a3"
+    }
+]
