@@ -15,7 +15,7 @@ Vinita Navani
 ## Questions
 For any questions please email me at vinita.navani@gmail.com or visit my Github page at [vini3076](https://github.com/vini3076).
 
-##Screenshot
+## Screenshot
 
 ![Screenshot for project](./public/assets/images/screencapture-note-taker-vn-6ebf1fab3cae-herokuapp-notes-2023-08-26-23_14_54.png)
 
