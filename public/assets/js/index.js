@@ -11,7 +11,7 @@ if (window.location.pathname === '/notes') {
   newNoteBtn = document.querySelector('.new-note');
   noteList = document.querySelectorAll('.list-container .list-group');
 }
-
+console.log(noteTitle, noteText)
 // Show an element
 const show = (elem) => {
   elem.style.display = 'inline';
@@ -71,6 +71,8 @@ const handleNoteSave = () => {
     title: noteTitle.value,
     text: noteText.value,
   };
+
+  console.log(newNote);
   saveNote(newNote).then(() => {
     getAndRenderNotes();
     renderActiveNote();
