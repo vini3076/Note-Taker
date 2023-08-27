@@ -32,10 +32,8 @@ app.post("/api/notes", (req, res) => {
       id: uuid.v4(),
     };
 
-    console.log("new note: ", newNote);
-    // Add a new review
+    // Add a new note
     parsedNotes.push(newNote);
-console.log(parsedNotes);
     // Write updated notes back to the file
     fs.writeFileSync( "./db/db.json", JSON.stringify(parsedNotes));
     res.json(parsedNotes);
@@ -48,13 +46,11 @@ app.delete("/api/notes/:id", (req, res) => {
   const noteID = req.params.id;
   // Finds the note with the given id property
   const deleteNote = parsedNotes.find((note) => note.id === noteID);
-  // Deletes the note with the given id property from the JSON array
   if (deleteNote) {
     parsedNotes = parsedNotes.filter(note => note.id !== noteID)
 
   // Writes the new note to the db.json file
-  fs.writeFileSync("./db/db.json", JSON.stringify(parsedNotes, null, 4));
-  // Returns the new note to the client
+  fs.writeFileSync("./db/db.json", JSON.stringify(parsedNotes));
   res.json(parsedNotes);
   }
 });
